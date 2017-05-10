@@ -1,0 +1,825 @@
+<script src="http://prismjs.com/prism.js" type="text/javascript" charset="utf-8"></script>
+<h1>JavaScript</h1>
+<br />
+<h2>Premier script</h2>
+<br />
+<p>Créer un répertoire coursjs dans le répertoire à la racine de votre serveur local.</p>
+
+<p>Créer un fichier index.html</p>
+
+<pre><code class="language-markup">
+<script type="prism-html-markup">
+<!DOCTYPE html>
+	<html>
+		<head>
+		    <title>Mon premier script en JS</title>
+		</head>
+		<body>
+		    <script src="js/cours.js"></script><script> <!-- Ajout de la page javascript -->
+		</body>
+	</html>
+</script>
+</code>
+</pre>
+<br />
+<p>Créer un répertoire js, et y ajouter un fichier cours.js à l'intérieur</p>
+
+<pre><code class="language-javascript">console.log("Bonjour en JavaScript !"); //Affiche simplement "Bonjour en JavaScript !" dans la console du navigateur
+</code></pre>
+
+<p>Faire un clic droit, examiner/inspecter selon votre navigateur, et ouvrez l'onglet "console", vous verrez qu'il y a bien "Bonjour en JavaScript !"</p>
+<br />
+<p>Voilà ! Vous avez codé votre premier script en js</p>
+<br />
+
+<h2 id="variable"> Variables</h2>
+<br />
+<p>Une variable est une zone de stockage d'un information, et est caractérisée par 3 propriétés qui sont :</p>
+<p><b>Nom</b> : commençant par une minuscule(norme), pouvant contenir des majuscules, quelques caractères spéciaux (exemple: $) et _</p>
+<p><b>Valeur</b> : données stockée</p>
+<p><b>Type</b> :  détermine le rôle, ainsi que les opérations applicables</p>
+<br />
+
+<h3>Déclaration</h3>
+<br />
+<p>Une variable se déclare par un var</p>
+<pre><code class="language-javascript">var a;
+console.log(a);
+</code></pre>
+
+<p>Si vous vérifiez ce qu'il se passe dans la console, vous verrez qu'"undefined" est affiché, c'est normal, nous n'avons pas attribué de valeur à a.</p>
+
+<p> Vous remarquerez, pour ceux qui ont déjà fais du php, qu'on ne donne pas le type de la variable dans la déclaration. La variable prendra automatiquement le type de la première valeur qu'on lui affectera</p>
+<br />
+
+<h3>Affectation </h3>
+<br />
+<p>Pour affecter une valeur à une variable, on utilise tout simplement l'opérateur "="</p>
+<pre><code class="language-javascript">var a;
+a=78; //var a=78; aurait très bien fonctionné aussi
+console.log(a);
+</code></pre>
+<br />
+
+<h3>Conversion</h3>
+<br />
+<p>On peut concaténer un nombre à une chaine de caractères</p>
+<pre><code class="language-javascript">var a=1;
+console.log("La valeur de a est "+a);
+</code></pre>
+<br />
+
+<p>On peut aussi forcer la conversion de 1 par exemple avec "parseInt("1")"</p>
+<br />
+
+<h2>Intéractions utilisateur</h2>
+<br />
+<p>La saisie d'une valeur par l'utilisateur, se fait par la fonction "prompt"</p>
+<pre><code class="language-javascript">var name=prompt("Comment vous appelez-vous ?");
+alert("Bonjour " + name); //Affiche un message pop-up
+</code></pre>
+<br />
+
+<h2>Conditions</h2>
+<br />
+<h3>IF</h3>
+<pre><code class="language-javascript">var age = Number(prompt("Entrez votre age :"));
+if (age > 17) {
+    console.log("Vous etes majeur");
+}else{
+	console.log("Vous etes mineur");
+}
+</code></pre>
+<br />
+<p>Il est possible de créer des conditions composées, à l'aide d'opérateurs logique</p>
+<h4>ET / OU / NON</h4>
+<pre><code class="language-javascript">if(age > 0 && age < 110){
+	console.log("C'est fort probable");
+}
+if(age < 1 || age > 109){
+	console.log("Ca m'etonnerai !");
+}
+if(!(age)){
+	console.log("Vous n'avez rien entré !");
+}
+</code></pre>
+<br />
+
+<h3>SWITCH</h3>
+<br />
+<pre><code class="language-javascript">var choix = prompt("Supportez-vous PSG ? y/n");
+switch(choix) {
+	case "y":
+		console.log("Comme beaucoup...");
+		break;
+	case "n":
+		console.log("Etonnant !");
+		break;
+	default:
+		console.log("Votre choix ne fait pas partie de la selection");
+}</code></pre>
+<br />
+
+<h2>Les boucles</h2>
+<br />
+<h3>WHILE</h3>
+<br />
+<p><b>Tant que</b> la condition est vraie, on continue à exécuter la boucle</p>
+<pre><code class="language-javascript">var a=0;
+while(a < 5){
+	console.log(a); //Affiche 01234
+	a++;
+}</code></pre>
+<br />
+
+<h3>FOR</h3>
+<br />
+<pre><code class="language-javascript">for(a = 0; a < 5; a++){ //incremente a de 1 a chaque fois
+	console.log(a); //Affiche 01234
+}</code></pre>
+<br />
+
+<h3>DO... while</h3>
+<br />
+<p>Le DO... while, fonctionne presque comme le while, sauf que l'on execute au moins une fois le code, voici la syntaxe </p>
+<pre><code class="language-javascript">var continuer = true;
+do{
+	continuer = confirm("Continuer ? "); // Affiche un message de confirmation qui retourne true si on clique sur OK
+}while(continuer); //le fait de mettre juste continuer, vérifier si continue est vrai (boolean)
+</code></pre>
+<br />
+
+<h2>Les tableaux</h2>
+
+<h3>Définition </h3>
+<br />
+<p>Un tableau ou array en anglais, est une variable qui contient plusieurs valeurs, que l'on appel items. Chaque item est accessible via son indice, index en anglais que l'on compte à partir de 0.</p>
+<table style="border: solid black 1px, padding: 3px;">
+<tr>
+	<th style="height:20px;width:56px;" height="20">Indice </th>
+	<td style="height:20px;width:56px;" height="20">0  </td>
+	<td style="height:20px;width:56px;" height="20">1  </td>
+	<td style="height:20px;width:56px;" height="20">2  </td>
+	<td style="height:20px;width:56px;" height="20">3  </td>
+</tr>
+<tr>
+	<th style="height:20px;width:56px;" height="20">Valeur  </th>
+	<td style="height:20px;width:56px;" height="20">valeur 1  </td>
+	<td style="height:20px;width:56px;" height="20">valeur 2  </td>
+	<td style="height:20px;width:56px;" height="20">valeur 3  </td>
+	<td style="height:20px;width:56px;" height="20">valeur 4  </td>
+</tr>
+</table>
+<p>
+La numérotation des indice commence à 0 ! Ceci est très important, il y aura toujours un décalage, il faudra donc toujours garder ça en tête !
+</p>
+<br />
+<h3>Déclarer un tableau</h3>
+<br />
+<pre><code class="language-javascript">var myArray = ['Mathieu', 'Michael', 'Mohammed', 'David', 'Guillaume'];
+}</code></pre>
+
+ou 
+
+<pre><code class="language-javascript">var myArray = new Array('Mathieu', 'Michael', 'Mohammed', 'David', 'Guillaume');</code></pre>
+
+<br />
+<h3>Afficher ou écrire dans un tableau</h3>
+<br />
+
+<pre><code class="language-javascript">console.log(myArray[1]); // affiche Michael
+myArray[1] = "pasMichael"; // remplace dans le tableau la valeur "Michael" par "pasMichael"
+</code></pre>
+
+<br />
+<h3>Ajouter ou supprimer une valeur dans un tableau</h3>
+<br />
+
+<pre><code class="language-javascript">myArray.push("Bernard"); // ajoute "Bernard"
+myArray.shift(); // Retire "Mathieu" (1ère valeur)
+myArray.pop(); // Retire "Bernard" (dernière valeur)
+</code></pre>
+
+<br />
+<h3>Parcourir un tableau</h3>
+<br />
+
+<pre><code class="language-javascript">for (var i = 0, i < myArray.length; i++) {    
+    alert(myArray[i]);
+}
+</code></pre>
+
+<br />
+<h3>Les Tableaux à Deux dimensions</h3>
+<br />
+<p>Il est possible de déclarer dans un tableau, un autre tableau
+<br />
+<pre><code class="language-javascript">var my2Array = new Array();
+my2Array.push(["01", "02"]); // On ajoute le tableau ["01", "02"] au tableau my2Array
+my2Array.push(["11", "12"]);
+</code></pre>
+<br />
+Ainsi, pour récupérer et afficher les valeurs voulues, on fera :
+<br />
+<pre><code class="language-javascript">console.log(my2Array[0][0]); // affiche "01" (1ère ligne et 1ère colonne)
+console.log(my2Array[1][0]); // affiche "11" (2nde ligne et 1ère colonne)
+</code></pre>
+<br />
+
+<h3>Petit exercice</h3>
+<br />
+<p>La notion de tableaux étant très importante, nous allons faire un petit exercice</p>
+<p>Créer un petit script qui demandera la saisie à l'utilisateur, que tout ce que l'utilisateur aura saisi s'ajoute à un tableau. A la fin de chaque saisie, l'utilisateur doit choisir s'il doit continuer ou pas. Quand l'utilisateur aura fini, on affiche toutes les données entrées</p>
+<pre><code class="language-javascript">// ...
+var valider = true; //Initialisation des variables 
+// ...
+Faire{
+	// ...
+	// Demander la saisie et l'ajouter au tableau
+	// ...
+	valider = confirm("Voulez-vous continuer ?");
+}Tant Que l'utilisateur à choisi OK
+// ...
+//Afficher tous les textes saisis par l'utilisateur à l'aide d'un for
+// ...
+</code></pre>
+<br />
+
+<h4>Correction </h4>
+<br />
+<pre><code class="language-javascript">
+var valider = true;
+var tab = new Array();
+do{
+	tab.push(prompt("Entrez votre text: "));
+	valider = confirm("Voulez-vous continuer ?");
+}while(valider == true);
+for(var i=0; i< tab.length; i++){
+	console.log(tab[i]);
+}
+</code></pre>
+
+<br />
+<h3>Les Objets littéraux</h3>
+<br />
+
+<p>Il est aussi possible d'accéder à des items au moyen d'un identifiant, précédemment, nous procédions de cette façon : </p>
+<table style="border: solid black 1px, padding: 3px;">
+<tr>
+	<th style="height:20px;width:56px;" height="20">Indice </th>
+	<td style="height:20px;width:56px;" height="20">0  </td>
+	<td style="height:20px;width:56px;" height="20">1  </td>
+	<td style="height:20px;width:56px;" height="20">2  </td>
+	<td style="height:20px;width:56px;" height="20">3  </td>
+	<td style="height:20px;width:56px;" height="20">4  </td>
+</tr>
+<tr>
+	<th style="height:20px;width:56px;" height="20">Valeur  </th>
+	<td style="height:20px;width:56px;" height="20">Mathieu  </td>
+	<td style="height:20px;width:56px;" height="20">Michael  </td>
+	<td style="height:20px;width:56px;" height="20">Mohammed  </td>
+	<td style="height:20px;width:56px;" height="20">David  </td>
+	<td style="height:20px;width:56px;" height="20">Guillaume  </td>
+</tr>
+</table>
+<br />
+<p>Mais il est possible de procéder de cette façon :</p>
+<br />
+<table style="border: solid black 1px, padding: 3px;">
+<tr>
+	<th style="height:20px;width:56px;" height="20">Indice </th>
+	<td style="height:20px;width:56px;" height="20">Moi  </td>
+	<td style="height:20px;width:56px;" height="20">Patron  </td>
+	<td style="height:20px;width:56px;" height="20">Technicien  </td>
+	<td style="height:20px;width:56px;" height="20">Developpeur  </td>
+	<td style="height:20px;width:56px;" height="20">Finance  </td>
+</tr>
+<tr>
+	<th style="height:20px;width:56px;" height="20">Valeur  </th>
+	<td style="height:20px;width:56px;" height="20">Mathieu  </td>
+	<td style="height:20px;width:56px;" height="20">Michael  </td>
+	<td style="height:20px;width:56px;" height="20">Mohammed  </td>
+	<td style="height:20px;width:56px;" height="20">David  </td>
+	<td style="height:20px;width:56px;" height="20">Guillaume  </td>
+</tr>
+</table>
+
+<pre><code class="language-javascript">var entreprise = {
+	Moi: 'Mathieu',
+	Patron: 'Michael',
+	Technicien: 'Mohammed',
+	Developpeur: 'David',
+	Finance: 'Guillaume'
+}
+</code></pre>
+
+<br />
+<p>Cette façon de déclarer va créer un "Objet", la déclaration d'un objet se fait comme pour un tableau, sauf qu'on remplace les [] par des {}</p>
+<br />
+<h3> Accès aux items</h3>
+<br />
+<p>L'accès aux items d'un objet peut se faire comme via un tableau </p>
+<br />
+<pre><code class="language-javascript">console.log(entreprise['Moi']); // affiche Mathieu
+</code></pre>
+<br />
+Ou aussi 
+<br />
+<pre><code class="language-javascript">console.log(entreprise.Moi); // affiche Mathieu
+</code></pre>
+<br />
+
+<br />
+<h3> Ajouter des items</h3>
+<br />
+<p>L'ajout d'un item ne se fait plus par un <b>push()</b>.</p>
+<br />
+<pre><code class="language-javascript">entreprise.langage = "JavaScript";
+</code></pre>
+<br />
+Ou aussi 
+<br />
+<pre><code class="language-javascript">entreprise['langage'] = "JavaScript";
+</code></pre>
+<br />
+
+<h3> Parcourir un objet </h3>
+<br />
+<p>Parcourir un objet n'est plus possible via un <b>FOR</b> classique, normal, car le for utilise pour indice un compteur, et nous n'avons plus de compteur. Ceci est alors possible via un <b>For ... in </b>(équivalent du foreach en php)</p>
+
+<br />
+<pre><code class="language-javascript">for (var id in entreprise){
+	console.log(entreprise[id]);
+}
+</code></pre>
+<br />
+
+
+<h2>Exercice 1 Les Tableaux Multidirectionnels</h2>
+<br />
+<p>Il est maintenant temps de faire un exercice pour mettre en pratique tout ce que nous avons vu depuis le début</p>
+<p>L'objectif de cet exercice est de calculer l'impôt sur le revenu, saisi par l'utilisateur en considerant qu'il n'y a qu'une seule part</p>
+<p>Piste : il nous faut un tableau à deux dimensions avec les montants à partir desquels on applique les taux ainsi que les taux eux-mêmes</p>
+<p>Exemple: si l'utilisateur a pour revenu 180 000, le taux de 45% sera appliqué de 152 260 à 180 000, 41% de 71 898 à 152 260... etc</p>
+<p>
+Exécution souhaitée pour 180 000
+</p>
+<p>
+Pour revenu supérieur à 152 260<br />
+Si revenu > 152 260 Alors <br />
+resultat = resultat + ((180 000 - 152 260) * 0.45)<br />
+<br />
+Si revenu - partie déjà traitée > 71 898 Alors<br />
+resultat = resultat + ((revenu - partie déjà traité)-71 898) * 0.41<br />
+<br />
+Ainsi de suite...
+</p>
+
+<table>
+	<thead>
+		<tr height="40">
+			<th scope="col" style="height: 40px; width: 56px; text-align: center;" height="40"><strong>Tranche</strong></th>
+			<th scope="col" style="width: 144px; text-align: center;"><strong>Revenu imposable</strong></th>
+			<th scope="col" style="width: 36px; text-align: center;"><strong>Taux</strong></th>
+		</tr>
+	</thead>
+	<colgroup>
+		<col>
+		<col>
+		<col>
+	</colgroup>
+	<tbody>
+		<tr height="20">
+			<td style="height:20px;width:56px;" height="20">1</td>
+			<td style="width:244px;">Jusqu'à&nbsp;9&nbsp;710&nbsp;€</td>
+			<td style="width:56px;">0%</td>
+		</tr>
+		<tr height="20">
+			<td style="height:20px;width:56px;" height="20">2</td>
+			<td style="width:244px;">De 9&nbsp;710&nbsp;€ à 26&nbsp;818 €</td>
+			<td style="width:56px;">14%</td>
+		</tr>
+		<tr height="20">
+			<td style="height:20px;width:56px;" height="20">3</td>
+			<td style="width:244px;">De 26&nbsp;818 € à&nbsp;71&nbsp;898 €</td>
+			<td style="width:56px;">30%</td>
+		</tr>
+		<tr height="20">
+			<td style="height:20px;width:56px;" height="20">4</td>
+			<td style="width:244px;">De 71&nbsp;898 € à&nbsp;152&nbsp;260 €</td>
+			<td style="width:56px;">41%</td>
+		</tr>
+		<tr height="20">
+			<td style="height:20px;width:56px;" height="20">5</td>
+			<td style="width:244px;">Plus de 152 260 €&nbsp;</td>
+			<td style="width:56px;">45%</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3> Correction </h3>
+
+<pre><code class="language-javascript">// On créer un tableau dans un tableau afin de conserver de pouvoir conserver le taux avec la fourchette
+// Il est important de mettre la plus grande valeur en premier
+var tab = new Array();
+tab.push([152260,45]);  // tab[0] pour accéder à 45 : tab[0][1]
+tab.push([71898,41]);	// tab[1]
+tab.push([26818,30]);	// tab[2]
+tab.push([9710,14]);	// tab[3]
+
+// On demande le revenu de l'utilisateur
+var revenu = parseInt(prompt("Votre revenu ?"));
+// On initialise une variable traite (qui correspondra à ce que l'on souhaite traiter)
+var traite = 0;
+// On initialise le résultat final
+var resultat = 0;
+
+// On parcourt le tableau
+for(var key=0; key < tab.length; key++){
+	// Si le revenu est supérieur à la valeur parcourue du tableau
+	if(revenu>tab[key][0]){
+		// On récupère la partie à traiter (tout ce qui est supérieur à 152260 pour le premier loop)
+		traite=revenu-tab[key][0];
+		// On multiplie la partie que l'on souhaite traiter par le taux que l'on ajoute au résultat
+		resultat += traite*(tab[key][1]/100);
+		// On retire ensuite la partie traitée de notre revenu et on continu avec la valeur suivante du tableau
+		revenu-=traite;
+	}
+}
+console.log(resultat);</code></pre>
+
+<br />
+<h2>Les fonctions</h2>
+<br />
+<p>
+Nous avons vu 4 fonctions, alert(), prompt(), confirm() et parseInt() qui sont des fonctions natives de JavaScript, le but de cette partie, est de créer nos propres fonctions. 
+</p>
+<br />
+<h3>Définition </h3>
+<p>
+Une fonction permet d'exécuter une action précise en appelant juste le nom de la fonction, et en lui ajoutant des paramètres si nécessaire. L'avantage principal d'une fonction, est de pouvoir exécuter du code assez long et complexe sans encombrer le code et donc de le simplifier.
+</p>
+<br />
+<h3>Première fonction </h3>
+<br />
+<pre><code class="language-javascript">function maFonction(arguments) { 
+    // Le code que va devoir exécuter la fonction
+}
+</code></pre>
+<br />
+<p>
+Décortiquons un peu tout ça et analysons un peu ce que nous pouvons lire dans ce code :<br />
+<br />
+    Le mot-clé function permet de déclarer une fonction, comme le mot var pour variable<br />
+    maFonction : le nom de la fonction <br />
+<br />
+    S'ensuit un couple de parenthèses contenant ce que l'on appelle des arguments. Ces arguments servent à fournir des informations à la fonction lors de son exécution. Par exemple, avec la fonction alert() quand vous lui passez en paramètre ce que vous voulez afficher à l'écran ;<br />
+<br />
+    Et vient enfin un couple d'accolades contenant le code que votre fonction devra exécuter.<br />
+<br />
+Il est important de préciser que tout code écrit dans une fonction ne s'exécutera que si vous appelez cette dernière (« appeler une fonction » signifie « exécuter »). Sans ça, le code qu'elle contient ne s'exécutera jamais.<br /></p>
+<br />
+
+<pre><code class="language-javascript">function sayHello() {
+    alert('Hello !');
+}
+sayHello(); // execute la fonction
+</code></pre>
+
+<br />
+<h3>Exemple concret</h3>
+<br />
+
+<p>Comme nous l'avons précisé avant, le principal intéret d'une fonction est de ne pas avoir à réécrire plusieurs fois le même code.</p>
+
+<br />
+
+<pre><code class="language-javascript">var prenoms = [];
+prenoms.push(prompt('Un prénom ? '));
+alert('Bonjour '+prenoms[prenoms.length-1]);
+
+prenoms.push(prompt('Un prénom ? '));
+alert('Bonjour '+prenoms[prenoms.length-1]);
+
+prenoms.push(prompt('Un prénom ? '));
+alert('Bonjour '+prenoms[prenoms.length-1]);
+
+for(var i=0; i< prenoms.length; i++){
+	console.log(prenoms[i]);
+}
+</code></pre>
+
+<br />
+<p>Comme vous pouvez le voir, nous avons réécris 3 fois le même code. L'idée est donc de juste appeler une fonction au lieu d'écrire 3 fois ces 2 même lignes de code</p>
+
+<br />
+
+<pre><code class="language-javascript">var prenoms = [];
+function addPrenom(){
+	prenoms.push(prompt('Un prénom ?'));
+	alert('Bonjour '+prenoms[prenoms.length-1]);
+}
+
+addPrenom();
+addPrenom();
+addPrenom();
+
+for(var i=0; i< prenoms.length; i++){
+	console.log(prenoms[i]);
+}
+</code></pre>
+
+<br />
+<p>Nous pourrions bien sûr simplifier encore plus, en mettant un for si on a une longue liste de prénoms à ajouter. C'est d'ailleurs ce que vous allez faire dans l'exercice qui suit</p>
+
+<br />
+
+<h3> Exercice 2 Les fonctions </h3>
+<br />
+<p>Pour cet exercice, vous allez devoir créer une fonction qui executera la suite arithmetique de (Un) = (Un-1)*2 + 3 et affichera tous les résultats 1 par 1, le premier terme et n étant des nombres saisis par l'utilisateur</p>
+<p>PS : portée des variables, une variable déclarée dans une fonction(appelée variable locale) n'est utilisable que dans la fonction alors qu'une variable déclarée hors fonction(appelée variable globale) est utilisable dans les fonctions (si j'aurai fais un var prenoms=[] dans la fonction, le console.log(prenoms[i]) n'aurait pas fonctionné.</p>
+
+<br />
+
+<h4>Correction </h4>
+<br />
+<pre><code class="language-javascript">var nb = parseInt(prompt('Saisissez un nombre : '));
+var n = parseInt(prompt('Saisissez le nombre de fois que vous souhaitez executer la suite : '));
+
+function suiteArith(){
+	for(var i=0; i< n; i++){
+		nb = nb*2 + 3;
+		alert(nb);
+	}
+}
+
+suiteArith();
+
+	
+
+</code></pre>
+
+<br />
+
+<h3>Les arguments </h3>
+<br />
+<p>Comme précisé à la définition d'une fonction, un argument(aussi paramètre) est une information envoyée à une fonction utile au code de la fonction, vous avez déjà envoyé des arguments, par exemple en utilisant la fonction alert(), la fonction alert permet d'afficher un pop-up, et ce que l'on passe en argument, sera le contenu du pop-up.</p>
+<p>Comme pour la fonction alerte, pour ajouter un argument, il suffit de le taper dans la parenthèse</p>
+<p>Un fonction avec argument se déclare ainsi : </p>
+<br />
+<pre><code class="language-javascript">function maFonction(argument){
+	alert("Votre argument est : "+argument);
+}
+
+maFonction('Premiere fonction avec argument !');
+</code></pre>
+<br />
+<p>On peut ajouter autant d'arguments que l'on souhaite, il suffit juste de les séparer par des , à l'intérieur de la parenthèse</p>
+<br />
+
+<h3>Les valeurs de retour </h3>
+<br />
+<p>Une fonction peut aussi nous renvoyer un résultat, comme les fonctions prompt, confirm ou parseInt, oui elles nous renvoient bien un résultat, souvenez-vous, nous avons souvent utilisé ces fonctions pour donner une valeur à une variable</p>
+<br />
+<pre><code class="language-javascript">var txt = prompt('Saisissez du texte : ');
+</code></pre>
+<br />
+<p>Faire : </p>
+<pre><code class="language-javascript">prompt('Saisissez du texte : ');
+</code></pre>
+<p>N'aurait aucun intéret</p>
+<p>Alors que notre fonction sayHello() en a beaucoup plus, elle execute une action (afficher Hello) mais ne nous retourne aucun résultat</p>
+<br />
+<p>Une fonction avec une valeur de retour fonctionne comme une fonction normal, on y ajoute juste le mot-clef "return" suivi de la valeur à renvoyer</p>
+<p>Plutôt que du texte, voici un exemple avec l'exercice précédent avec arguments et valeur de retour.</p>
+<br />
+<pre><code class="language-javascript">var nb = parseInt(prompt('Saisissez un nombre : '));
+var n = parseInt(prompt('Saisissez le nombre de fois que vous souhaitez executer la suite : '));
+
+function suiteArith(nombre, iterations){
+	for(var i=0; i< iterations; i++){
+		nombre = nombre*2 + 3;
+		alert('n'+(i+1)+': '+nombre); 
+	}
+	return nombre;	// et on renvoie nombre
+}
+
+var resultat = suiteArith(nb, n); //On execute la fonction avec les valeurs entrées par l'utilisateur en argument
+alert('Le resultat est : '+resultat); 
+</code></pre>
+<br />
+<p>Le code d'une fonction s'arrêtera automatiquement au moment où l'exécution croisera un return</p>
+<br />
+<pre><code class="language-javascript">var nb = parseInt(prompt('Saisissez un nombre : '));
+var n = parseInt(prompt('Saisissez le nombre de fois que vous souhaitez executer la suite : '));
+
+function suiteArith(nombre, iterations){
+	for(var i=0; i< iterations; i++){
+		nombre = nombre*2 + 3;
+		alert('n'+(i+1)+': '+nombre); 
+		return nombre;	// renverra le premier résultat, seulement la première boucle du for aura été exécuté
+	}
+}
+var resultat = suiteArith(nb, n); //On execute la fonction avec les valeurs entrées par l'utilisateur en argument
+alert('Le resultat est : '+resultat); 
+</code></pre>
+<br />
+<h3>Les fonctions anonymes</h3>
+<br />
+<p>Les fonctions anonymes comme son nom l'indique ne possèdent pas de nom, elles servent en général à être affectées à une variable.</p>
+<br />
+<pre><code class="language-javascript">var sayHello = function(){
+	alert('Hello !');
+};
+
+sayHello(); // affiche Hello !
+</code></pre>
+<br /><p>On pourrait presque dire que sayHello est devenu une fonction, mais il y a une petite nuance que nous verrons plus tard</p>
+<br />
+<h4>Code isolé</h4>
+<br />
+<p>On utilise souvent les fonctions anonymes pour du code isolé </p>
+<p>Mais pourquoi utiliser du code isoler ? L'isolement du code permet d'éviter qu'une partie de notre code n'affecte tout le reste du code. (Utilisation de variables portant le même nom par exemple) et permet surtout d'execu</p>
+<h5>Utilisation et déclaration </h5>
+<br />
+<pre><code class="language-javascript">(function(){
+	// code isolé
+})();
+</code></pre>
+<br />
+<p>Le fait de mettre les doubles parenthèses à la fin et le ;, permet d'exécuter immédiatement la fonction, celle-ci étant anonyme et non affectée à une variable, elle est inutilisable ailleurs. Si elle aurait été nommée ou affectée à une variable, nous pourrions la rappeler ailleurs </p>
+<br />
+<h3>Exercice 3 Les fonctions avec arguments et valeurs de retour</h3>
+<br />
+<p>Pour cet exercice, je souhaiterai que vous créez une fonction qui compare 2 nombres entrés par l'utilisateur(arguments), qui retournera le nombre le plus grand parmis les deux entrés</p>
+<br />
+<br />
+<h4>Correction</h4>
+<br />
+<pre><code class="language-javascript">var nb1 = parseInt(prompt('Saisissez le premier chiffre : '));
+var nb2 = parseInt(prompt('Saisissez le second chiffre : '));
+
+function plusGrand(first, second){
+	if(first > second){
+		return first;
+	}
+	return second; // Pas besoins de mettre un else, car si on entre dans la condition, on retourne "first"
+}				   // Rappelez vous, une fois qu'une fonction execute un return, elle quitte immédiatemment la function
+
+var lePlusGrand = plusGrand(nb1, nb2);
+
+alert('Le nombre le plus grand que vous avez saisi est : ' +lePlusGrand);
+</code></pre>
+<br />
+<h3>Toucher au HTML avec JavaScript</h3>
+<br />
+<h4>Accès aux éléments </h4>
+<br />
+<p>L'accès aux éléments HTML se fait en général via 3 fonctions, qu'on appelera plutôt méthodes, car elles appartiennent à un objet qui est le "document"</p>
+<br />
+<pre><code class="language-markup">
+<script type="prism-html-markup">
+		<div id="maDivId">
+		    <p>Une div avec un id</p>
+		</div>
+		<div name="maDivName">
+		    <p>Une div avec un name</p>
+		</div>
+</script>
+</code>
+</pre>
+<pre><code class="language-javascript">var divId = document.getElementById('maDivId'); // récupère le div d'id maDivId
+var divTag = document.getElementsByTagName('div'); // récupère un tableau contenant toutes les div
+var divName = document.getElementsByName('maDivName'); // récupère un tableau contenant toutes les div ayant l'attribut name maDivName
+
+</code></pre>
+
+<br />
+<h4>Accès via les Technologies récentes </h4>
+<br />
+<p>Il y a désormais deux nouvelles méthodes récentes que l'on utilise pour accéder aux éléments, ces deux méthodes sont "querySelector()" et "querySelectorAll()" qui appartiennent toutes deux au document. </p>
+<p>L'une "querySelector(argument)" permet de renvoyer le premier élément correspondant à l'argument, et l'autre "querySelectorAll(argument)" renvoie un tableau de tous les éléments correspondants à l'argument</p>
+<br />
+<p>Ce qui est très pratique avec ces méthodes, c'est que l'argument est simplement un sélecteur CSS</p>
+<p>Supposons : </p>
+<br />
+<pre><code class="language-markup">
+<script type="prism-html-markup">
+<div id="liste">
+    <div class="elem">
+        <p>Élément 1</p>
+        <p>Élément 2</p>
+    </div>
+
+    <div class="publicite">
+        <p>Élément 3</p>
+        <p>Élément 4</p>
+    </div>
+</div>
+<div id="contenu">
+    <p>Le contenu</p>
+</div>
+</script>
+</code>
+</pre>
+<pre><code class="language-javascript">var query = document.querySelector('#liste .elem p'),
+    queryAll = document.querySelectorAll('#liste .elem p');
+alert(query.innerHTML); // Affiche : "Élément 1"
+alert(queryAll.length); // Affiche : "2"
+alert(queryAll[0].innerHTML + ' - ' + queryAll[1].innerHTML); // Affiche : "Élément 1 - Élément 2"
+</code></pre>
+<br />
+
+<h4>Editer du HTML</h4>
+<br />
+<h5>Les attributs </h5>
+<br />
+<p>Pour cela, deux méthodes vont nous être utiles, getAttribute() et setAttribute() sur les Elements récupérés</p>
+<br />
+<pre><code class="language-markup">
+<script type="prism-html-markup">
+<body>
+	<a id="lien" href="http://lelien.fr">Un lien modifié par JavaScript</a>
+</body>
+</script>
+</code>
+</pre>
+<pre><code class="language-javascript">var lien = document.getElementById('lien'); // On récupère l'élément
+var href = lien.getAttribute('href'); 	// On récupère l'attribut href de l'élément
+alert(href);
+lien.setAttribute('href', 'http://www.n3xt.fr');
+</code></pre>
+<br />
+<h5>Les attributs accessibles </h5>
+<br />
+<p>La plupart des éléments natifs comme a possèdent des attributs accessibles (href en est un), quand c'est le cas, nous ne sommes plus obligés de passer par les getAttribute et setAttribute</p>
+<p>Le code précédent donnerait donc :</p>
+<br />
+<pre><code class="language-javascript">var lien = document.getElementById('lien'); // On récupère l'élément
+var href = lien.href; 	// On récupère l'attribut href de l'élément
+alert(href);
+lien.href = 'http://www.n3xt.fr';
+</code></pre>
+<br />
+<p><b>Attention ! L'attribut class ne se modifie pas par un .class mais par un .className </b></p>
+<br />
+<br />
+<h4>InnerHTML / innerText / textContent</h4>
+<br />
+<p>L'attribut .innerHTML permet de récupérer tout le contenu html enfant de l'élément. (tout ce qui sera entre les deux balises de l'élément sélectionné y compris les autres balises)</p>
+<p>.innerText et .textContent fonctionnent comme .innerHTML mais ne récupèrent pas les balises. La différence entre les deux, est que .textContent est supporté par tous les navigateurs supérieurs à IE9</p>
+<br />
+<h3>Exercice 4 Manipulation HTML</h3>
+<br />
+<p>Soit le code html : </p>
+<br />
+<pre><code class="language-markup">
+<script type="prism-html-markup">
+<div id="liste">
+    <div class="liens">
+        <a>Élément 1</a>
+        <a>Élément 2</a>
+    </div>
+
+    <div class="chiffresGras">
+        <p>Élément</p>
+        <p>Élément</p>
+    </div>
+</div>
+</script>
+</code>
+</pre>
+<br />
+<p>Je souhaiterai que chaque élément dans la div de class liens soient des liens qui pointent vers un lien quelconque, et que ceux de la class chiffresGras aient un nombre qui sera le numéro de l'itératon dans la balise p écris en gras.</p>
+<br />
+<h4>Correction </h4>
+<br />
+<pre><code class="language-javascript">var queryAll = document.querySelectorAll('#liste .liens a');
+for(var i=0; i< queryAll.length; i++){
+	queryAll[i].href = 'http://www.n3xt.fr';
+}
+var queryAllChiffres = document.querySelectorAll('#liste .chiffresGras p');
+for(var i=0; i< queryAll.length; i++){
+	queryAllChiffres[i].innerHTML += ' < b>'+(i+1)+'< /b>';
+}
+</code></pre>
+<br />
+<h3>Les noeuds</h3>
+<br />
+<p>Lorsque l'on a atteint un Element, on peut se déplacer vers les autres éléments grâce aux priopriétés suivantes : </p>
+<br />
+<h4>parentNode</h4>
+<br />
+<p>La propriété parentNode permet de se placer sur le parent de l'Element courant</p>
+<p>Reprenons l'exemple de l'exercice précédent, nous avions accédé à l'Element a. Pour accéder directement à la div de class liens, il aurait suffit dans le for(sinon nous sommes sur un tableau) de faire un parent=queryAll[i].parentNode;</p>
+<br />
+<h4>Childs</h4>
+<br />
+<p>Comme pour le parent pour retourner sur le premier enfant(Element 1) ou le dernier (Element 2), on peut faire parent.firstChild ou parent.lastChild</p>
+<br />
+<p>Il y a aussi deux autres méthodes qui permettent de passer du premier enfant, au suivant, ou au précédent à partir du dernier enfant</p>
+<p>Pour cela, on utilise les méthodes nextSibling et previousSibling</p>
+<br />
+<h3>Ajouter des Elements</h3>
+<br />
+<p>La création d'éléments se fait via la méthode createElement()</p>
